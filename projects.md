@@ -4,9 +4,9 @@ layout: page
 
 [**Application of deep learning for sweet cherry phenotyping**](/2020-06-26-real-time-cherry-detection/) (capstone project)
 
-> * Trained objection detection models for sweet cherry using YOLO convolutional neural network, which achieved over 99% accuracy and even surpassed human counting performance.
-> * Extracted the size and color information from the model inference results, and built an excel database for information querying using Python.
-> * Built an objection detection application to automate the process of sweet cherry counting and traits evaluation using OpenCV and Python.
+* Trained objection detection models for sweet cherry using YOLO convolutional neural network, which achieved over 99% accuracy and even surpassed human counting performance.
+* Extracted the size and color information from the model inference results, and built an excel database for information querying using Python.
+* Built an objection detection application to automate the process of sweet cherry counting and traits evaluation using OpenCV and Python.
 
 [**Anomaly detection in operation trace logger of QNX embedded system products**](/2020-03-04-anomaly-detection/)
 
