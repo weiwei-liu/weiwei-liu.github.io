@@ -4,12 +4,14 @@ title: Anomaly Detection with Recurrent Neural Network
 subtitle: Anomaly detection in operation trace logger of QNX embedded system products
 cover-img: /assets/img/embed.jpg
 thumbnail-img: /assets/img/embed.jpg
-tags: [Tensorflow, Keras,RNN,anomaly detection, attention model]
+tags: [Tensorflow, Keras,RNN,anomaly detection, seq2seq attention model]
 ---
 
-This notebook consists of four main parts to describe the workflow of training a Recurrent Neural Network with attention layer model to classify anomaly events in a sequence based embeded software log. These four parts are Data Loading and Preprocessing, Model building, Model training, Results Analysis and Visualization.
+This [notebook](https://github.com/weiwei-liu/anomaly_detection/blob/master/anomaly_detection_NN_train.ipynb) consists of four main parts to describe the workflow of training a Recurrent Neural Network with attention layer model to classify anomaly events in a sequence based embeded software log. These four parts are Data Loading and Preprocessing, Model building, Model training, Results Analysis and Visualization.
 
-The evaluate of new test data will be presented in another notebook.
+The evaluate of new test data will be presented in [another notebook](https://github.com/weiwei-liu/anomaly_detection/blob/master/anomaly_detection_NN_test.ipynb).
+
+Check the [repository](https://github.com/weiwei-liu/anomaly_detection) for code details.
 
 
 #### Data loading and preprocessing
@@ -41,36 +43,14 @@ The evaluate of new test data will be presented in another notebook.
     <tr style="text-align: right;">
       <th></th>
       <th></th>
-      <th>clean-01</th>
-      <th>clean-02</th>
-      <th>clean-03</th>
-      <th>clean-04</th>
-      <th>clean-05</th>
-      <th>clean-06</th>
-      <th>clean-07</th>
-      <th>clean-08</th>
-      <th>clean-09</th>
-      <th>clean-10</th>
-      <th>fifo-ls-01</th>
-      <th>fifo-ls-02</th>
-      <th>fifo-ls-sporadic</th>
-      <th>full-while</th>
-      <th>half-while</th>
+      <th>clean1</th>
+      <th>clean2</th>
+      <th>anomalous1</th>
+      <th>anomalous2</th>
     </tr>
     <tr>
       <th>class</th>
       <th>event</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -83,162 +63,63 @@ The evaluate of new test data will be presented in another notebook.
       <th>MSG_ERROR</th>
       <td>6.0</td>
       <td>6.0</td>
-      <td>8.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
-      <td>6.0</td>
       <td>5715</td>
-      <td>5589.0</td>
-      <td>6006.0</td>
-      <td>509.0</td>
       <td>422.0</td>
     </tr>
     <tr>
       <th>REC_MESSAGE</th>
       <td>17968.0</td>
       <td>17969.0</td>
-      <td>17963.0</td>
-      <td>18135.0</td>
-      <td>18134.0</td>
-      <td>18147.0</td>
-      <td>18216.0</td>
-      <td>18213.0</td>
-      <td>18260.0</td>
-      <td>18347.0</td>
       <td>65232</td>
-      <td>66973.0</td>
-      <td>65666.0</td>
-      <td>44802.0</td>
       <td>45072.0</td>
     </tr>
     <tr>
       <th>REC_PULSE</th>
       <td>24710.0</td>
       <td>24226.0</td>
-      <td>24173.0</td>
-      <td>24871.0</td>
-      <td>24849.0</td>
-      <td>24358.0</td>
-      <td>24390.0</td>
-      <td>24397.0</td>
-      <td>24442.0</td>
-      <td>24644.0</td>
       <td>28312</td>
-      <td>28349.0</td>
-      <td>25631.0</td>
-      <td>39342.0</td>
       <td>39529.0</td>
     </tr>
     <tr>
       <th>REPLY_MESSAGE</th>
       <td>17947.0</td>
       <td>17950.0</td>
-      <td>17938.0</td>
-      <td>18098.0</td>
-      <td>18103.0</td>
-      <td>18131.0</td>
-      <td>18190.0</td>
-      <td>18180.0</td>
-      <td>18248.0</td>
-      <td>18329.0</td>
       <td>59477</td>
-      <td>61336.0</td>
-      <td>59627.0</td>
-      <td>44202.0</td>
       <td>44565.0</td>
     </tr>
     <tr>
       <th>SIGNAL</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>2.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>2.0</td>
       <td>37</td>
-      <td>36.0</td>
-      <td>39.0</td>
-      <td>NaN</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>SND_MESSAGE</th>
       <td>18089.0</td>
       <td>18077.0</td>
-      <td>18073.0</td>
-      <td>18234.0</td>
-      <td>18235.0</td>
-      <td>18247.0</td>
-      <td>18300.0</td>
-      <td>18286.0</td>
-      <td>18373.0</td>
-      <td>18447.0</td>
       <td>65378</td>
-      <td>67122.0</td>
-      <td>65808.0</td>
-      <td>45149.0</td>
       <td>45426.0</td>
     </tr>
     <tr>
       <th>SND_PULSE</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>882</td>
-      <td>884.0</td>
-      <td>943.0</td>
-      <td>11226.0</td>
       <td>11289.0</td>
     </tr>
     <tr>
       <th>SND_PULSE_DIS</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>877</td>
-      <td>880.0</td>
-      <td>958.0</td>
-      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>SND_PULSE_EXE</th>
       <td>36701.0</td>
       <td>48219.0</td>
-      <td>60157.0</td>
-      <td>72854.0</td>
-      <td>84809.0</td>
-      <td>96321.0</td>
-      <td>108339.0</td>
-      <td>120360.0</td>
-      <td>132390.0</td>
-      <td>144575.0</td>
       <td>181312</td>
-      <td>193406.0</td>
-      <td>202078.0</td>
-      <td>172297.0</td>
       <td>160365.0</td>
     </tr>
     <tr>
@@ -246,18 +127,7 @@ The evaluate of new test data will be presented in another notebook.
       <th>BUFFER</th>
       <td>2161.0</td>
       <td>2158.0</td>
-      <td>2170.0</td>
-      <td>2224.0</td>
-      <td>2242.0</td>
-      <td>2243.0</td>
-      <td>2264.0</td>
-      <td>2278.0</td>
-      <td>2298.0</td>
-      <td>2329.0</td>
       <td>4845</td>
-      <td>4938.0</td>
-      <td>4751.0</td>
-      <td>4326.0</td>
       <td>4334.0</td>
     </tr>
   </tbody>
@@ -268,22 +138,26 @@ The evaluate of new test data will be presented in another notebook.
 
 From above table, it could be seen that the clean and anomalous files are quite different based on the occurrence counts of different events. For example, normally event `COMM-SND_MESSAGE` occurced around 18000 times, while in the anomalous files it occured around 45000~67000 times. This may not be seen as an effective way to detect anomalous activity, however, it can show a general picture of the data where the anomaly could be residing.
 
+Before the data is ready for use in the training period. The data was tokenized, preprocessed to input sequences and output sequences, and then split into training and validation dataset.
+
 
 #### Model Building
 
-* Load the encoder and decoder model
+In this project, sequence to sequence neural network model with attention layer was used. The seq2seq model contains an encoder with GRU unit, an attention layer which increase the accuracy of the model, and a decoder also with GRU unit.
 
 The architecture of this model is:
 
-`input of events sequence` ------>>
-`encoder(GRU unit)` ------>>
-`attention layer` ----->>
-`decoder (GRU unit)` ------->>
-`output layer`
+<div style="text-align:center">
+<img src="/assets/img/attention.png" alt="seq2seq model architecture" width="250" height="350"/>
+</div>
 
 The input is a small segment of the log file, in this case, 5 continuous events, and the target output is the next 5 continuous events following the input one. The general idea is that using this proposed NN model to train inputs and predicting the following outputs. Assuming the event sequences patterns between the clean and anomalous ones are different, then the preciting/test accuracy should be different using the same model and trained weights.
 
-Check model.py file for the details of encoder, attention, and decoder models.
+Check [model.py](https://github.com/weiwei-liu/anomaly_detection/blob/master/model.py) file for the details of encoder, attention, and decoder models.
+
+#### Model Training
+
+Check [training code](https://github.com/weiwei-liu/anomaly_detection/blob/master/anomaly_detection_NN_train.ipynb) for details.
 
 #### Results
 
