@@ -43,4 +43,6 @@ So, after labelling images with bounding boxes, A Yolo-efficientnet model was tr
 
 After making sure the model had achieved satisfying results, we build a real time cherry detection application using OpenCV and other python packages. Besides, the application can also store the predicted results by our model, and then automatically analyze the bounding boxes sizes and extract colour information.
 
-![realtime detection](/assets/img/cherry.gif)
+<div style="text-align:center">
+<img src="/assets/img/cherry.gif" alt="realtime detection results" width="600" height="400"/>
+</div>
