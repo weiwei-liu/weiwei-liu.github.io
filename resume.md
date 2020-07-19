@@ -29,8 +29,9 @@ Tongji University, Shanghai, China
 
 (Apr-Jun 2020) **[Capstone project](/2020-06-26-real-time-cherry-detection/) @ Agriculture and Food Canada,** Summerland, BC
 
-* Applying object detection deep learning algorithms on cherries images using OpenCV and Yolo.
-* Build a real time cherry counting and measuring application using Python.
+* Trained objection detection models for sweet cherry using YOLO convolutional neural network, which achieved over 99% accuracy and even surpassed human counting performance.
+* Extracted the size and color information from the model inference results, and built an excel database for information querying using Python.
+* Built an objection detection application to automate the process of sweet cherry counting and traits evaluation using OpenCV and Python.
 
 (Jan-Sep 2019) **Project coordinator @ AKT detailing services,** Toronto, ON
 
