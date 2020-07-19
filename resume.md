@@ -39,11 +39,20 @@ Tongji University, Shanghai, China
 
 (2016-2018) **Deputy director of civil department @ SAFBON water services,** Shanghai
 
-* Led the design team of 5 to accomplish wastewater or seawater desalination projects in several Asia countries.
+* Led the civil engineering team of 5 to accomplish wastewater or seawater desalination projects in several Asia countries.
+* Managed the design and construction of 4 water or wastewater projects.
+* Designed various concrete water tanks, retaining walls and steel structure workshop.
 
 (2011-2015) **Structural Engineer @ Tongji Architectural Design,** Shanghai, China
 
- * Responsible for the numerical modelling, simulation, optimization and design of world-class projects including Shanghai Tower (632m), the highest building in China.
+* Responsible for the numerical modelling, simulation, optimization and design of civil structures under various loads conditions.
+* Performed time-series Data Analysis for high-rise buildings under earthquake and wind loads.
+* Participated in the foundation design and analysis of Shanghai Tower (632m, Highest building in Asia).
+
+(2008-2011) **Research Assistant @ Tongji University,** Shanghai, China
+
+* Designed and conducted experiment to analyze the bearing capacity and settlement effects among three different post grouting mechanism on bored piles.
+* Developed a non-linear program for section-designing of structural members under different stress state with MATLAB.
 
 ## Publications
  - - - -
