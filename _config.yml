@@ -13,8 +13,9 @@ author: Weiwei Liu
 
 navbar-links:
   Home: "index.html"
-  Projects: "projects"
   Resume: "resume"
+  Projects: "projects"
+
 
 
 # --- Logo --- #
